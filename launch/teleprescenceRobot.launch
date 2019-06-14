@@ -1,0 +1,22 @@
+<launch>
+
+  <!-- iRobotControl Node -->
+  <node name="iRobotControl"          pkg="irobot"  type="iRobotListener.py" output="screen">
+  </node>
+  <!-- RpLidar Sender Node -->
+  <node name="rpLidarSendNode"          pkg="irobot"  type="laserDataSender.py" output="screen">
+  </node>
+  <!-- Odom Sender Node -->
+  <node name="odomSendNode"          pkg="irobot"  type="odomDataSender.py" output="screen">
+  </node>
+  <!-- iRobot Driver Node -->
+  <arg name="config" default="$(find ca_driver)/config/default.yaml"/>
+  <arg name="desc" default="true"/>
+  <node name="ca_driver" pkg="ca_driver" type="ca_driver" output="screen">
+    <rosparam command="load" file="$(arg config)"/>
+    <param name="robot_model" value="CREATE_2"/>
+  </node>
+  <!-- Robot description -->
+  <include if="$(arg desc)" file="$(find ca_description)/launch/create_2.launch"/>
+
+</launch>
