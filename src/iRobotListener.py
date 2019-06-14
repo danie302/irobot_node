@@ -11,9 +11,12 @@ def move():
     # UDP config
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # UDP
     sock.bind(("192.168.1.68", 4002))
-
+    char = "stop"
     while True:
-        char, addr = sock.recvfrom(1024)
+        data, addr = sock.recvfrom(1024)
+        if data != char:
+            char = data
+
         if char == "right":
             print char
             vel_msg.linear.x = 0
