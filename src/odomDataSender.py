@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import rospy
-from sensor_msgs.msg import LaserScan
+from nav_msgs.msg import Odometry
 import socket
 import json
 import yaml
@@ -19,7 +19,7 @@ def callback(msg):
 def listener():
     rospy.init_node('odomTransmiter', anonymous=True)
 
-    rospy.Subscriber("odom", LaserScan, callback)
+    rospy.Subscriber("odom", Odometry, callback)
 
     rospy.spin()
 
