@@ -34,7 +34,7 @@ def move():
             velocity_publisher.publish(vel_msg) 
         elif char == "straight":
             print char
-            vel_msg.linear.x = 0.2
+            vel_msg.linear.x = 0.1
             vel_msg.linear.y = 0
             vel_msg.linear.z = 0
             vel_msg.angular.x = 0
@@ -43,7 +43,7 @@ def move():
             velocity_publisher.publish(vel_msg) 
         elif char == "back":
             print char
-            vel_msg.linear.x = -0.2
+            vel_msg.linear.x = -0.1
             vel_msg.linear.y = 0
             vel_msg.linear.z = 0
             vel_msg.angular.x = 0
