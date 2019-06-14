@@ -14,11 +14,12 @@ def move():
     char = "stop"
     while True:
         data, addr = sock.recvfrom(1024)
+        print(data)
         if (data != char) and (len(data) > 1):
             char = data
 
         if char == "right":
-            print char
+            
             vel_msg.linear.x = 0
             vel_msg.linear.y = 0
             vel_msg.linear.z = 0
@@ -27,7 +28,7 @@ def move():
             vel_msg.angular.z = -2
             velocity_publisher.publish(vel_msg)
         elif char == "left":
-            print char
+            
             vel_msg.linear.x = 0
             vel_msg.linear.y = 0
             vel_msg.linear.z = 0
@@ -36,7 +37,7 @@ def move():
             vel_msg.angular.z = 2    
             velocity_publisher.publish(vel_msg) 
         elif char == "straight":
-            print char
+            
             vel_msg.linear.x = 0.1
             vel_msg.linear.y = 0
             vel_msg.linear.z = 0
@@ -45,7 +46,7 @@ def move():
             vel_msg.angular.z = 0     
             velocity_publisher.publish(vel_msg) 
         elif char == "back":
-            print char
+            
             vel_msg.linear.x = -0.1
             vel_msg.linear.y = 0
             vel_msg.linear.z = 0
@@ -54,7 +55,7 @@ def move():
             vel_msg.angular.z = 0
             velocity_publisher.publish(vel_msg)
         elif char == "stop": ## Stop
-            print char
+            
             vel_msg.linear.x = 0
             vel_msg.linear.y = 0
             vel_msg.linear.z = 0
