@@ -14,7 +14,7 @@ def move():
     char = "stop"
     while True:
         data, addr = sock.recvfrom(1024)
-        if data != char:
+        if (data != char) and (len(data) > 1):
             char = data
 
         if char == "right":
