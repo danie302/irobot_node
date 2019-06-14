@@ -10,16 +10,11 @@ def move():
     
     # UDP config
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # UDP
-    sock.connect(("192.168.1.68", 4002))
-    char = "stop"
-    while True:
-        data = sock.recv(1024)
-        print(data)
-        if (data != char) and (len(data) > 1):
-            char = data
+    sock.bind(("192.168.1.68", 4002))
 
+    while True:
+        char, addr = sock.recvfrom(1024)
         if char == "right":
-            
             vel_msg.linear.x = 0
             vel_msg.linear.y = 0
             vel_msg.linear.z = 0
@@ -28,7 +23,6 @@ def move():
             vel_msg.angular.z = -2
             velocity_publisher.publish(vel_msg)
         elif char == "left":
-            
             vel_msg.linear.x = 0
             vel_msg.linear.y = 0
             vel_msg.linear.z = 0
@@ -37,7 +31,6 @@ def move():
             vel_msg.angular.z = 2    
             velocity_publisher.publish(vel_msg) 
         elif char == "straight":
-            
             vel_msg.linear.x = 0.1
             vel_msg.linear.y = 0
             vel_msg.linear.z = 0
@@ -46,7 +39,6 @@ def move():
             vel_msg.angular.z = 0     
             velocity_publisher.publish(vel_msg) 
         elif char == "back":
-            
             vel_msg.linear.x = -0.1
             vel_msg.linear.y = 0
             vel_msg.linear.z = 0
@@ -55,7 +47,6 @@ def move():
             vel_msg.angular.z = 0
             velocity_publisher.publish(vel_msg)
         elif char == "stop": ## Stop
-            
             vel_msg.linear.x = 0
             vel_msg.linear.y = 0
             vel_msg.linear.z = 0
