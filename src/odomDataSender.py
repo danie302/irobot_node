@@ -13,7 +13,6 @@ def convertToSend(data):
 def callback(msg):
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     data = convertToSend(msg)
-    print data
     sock.sendto(data, ("192.168.1.65", 4003))
     
 def listener():
