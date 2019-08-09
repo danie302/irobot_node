@@ -13,7 +13,7 @@ def convertToSend(data):
 def callback(msg):
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     data = convertToSend(msg)
-    sock.connect(("10.154.116.42", 4001))
+    sock.connect(("10.154.116.46", 4001))
     sock.send(data)
     sock.close()
     
