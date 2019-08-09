@@ -13,7 +13,7 @@ def move():
     sock.bind(("10.154.116.54", 4002))
 
     while True:
-        char, addr = sock.accept(1)
+        char, addr = sock.accept()
         if char == "right":
             vel_msg.linear.x = 0
             vel_msg.linear.y = 0
