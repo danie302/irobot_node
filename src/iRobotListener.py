@@ -11,6 +11,7 @@ def move():
     # TCP config
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # TCP
     sock.bind(("10.154.116.54", 4002))
+    sock.listen(1)
 
     while True:
         char, addr = sock.accept()
