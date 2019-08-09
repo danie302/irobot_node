@@ -12,9 +12,10 @@ def move():
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # TCP
     sock.bind(("10.154.116.54", 4002))
     sock.listen(1)
+    conn, addr = sock.accept()
 
     while True:
-        char, addr = sock.accept()
+        char = conn.recv(1024)
         if char == "right":
             vel_msg.linear.x = 0
             vel_msg.linear.y = 0
