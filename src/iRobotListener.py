@@ -9,11 +9,11 @@ def move():
     vel_msg = Twist()
     
     # UDP config
-    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # UDP
-    sock.bind(("192.168.1.68", 4002))
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # TCP
+    sock.bind(("192.168.0.3", 4002))
 
     while True:
-        char, addr = sock.recvfrom(1024)
+        char, addr = sock.accept(1)
         if char == "right":
             vel_msg.linear.x = 0
             vel_msg.linear.y = 0
