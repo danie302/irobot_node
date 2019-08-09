@@ -8,14 +8,12 @@ def move():
     velocity_publisher = rospy.Publisher('/cmd_vel', Twist, queue_size=10)
     vel_msg = Twist()
     
-    # TCP config
-    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # TCP
-    sock.bind(("10.154.116.54", 4002))
-    sock.listen(1)
-    conn, addr = sock.accept()
+    # UDP config
+    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # UDP
+    sock.bind(("192.168.1.68", 4002))
 
     while True:
-        char = conn.recv(1024)
+        char, addr = sock.recvfrom(1024)
         if char == "right":
             vel_msg.linear.x = 0
             vel_msg.linear.y = 0
@@ -56,7 +54,6 @@ def move():
             vel_msg.angular.y = 0
             vel_msg.angular.z = 0
             velocity_publisher.publish(vel_msg)
-        char.close()
 
 if __name__ == '__main__':
     move()

@@ -11,11 +11,9 @@ def convertToSend(data):
     return data
 
 def callback(msg):
-    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     data = convertToSend(msg)
-    sock.connect(("10.154.116.42", 4003))
-    sock.send(data)
-    sock.close()
+    sock.sendto(data, ("192.168.1.65", 4003))
     
 def listener():
     rospy.init_node('odomTransmiter', anonymous=True)

@@ -11,11 +11,9 @@ def convertToSend(data):
     return data
 
 def callback(msg):
-    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     data = convertToSend(msg)
-    sock.connect(("10.154.116.46", 4001))
-    sock.send(data)
-    sock.close()
+    sock.sendto(data, ("192.168.1.65", 4001))
     
 def listener():
     rospy.init_node('laserTransmiter', anonymous=True)
