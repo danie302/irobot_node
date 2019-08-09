@@ -8,9 +8,9 @@ def move():
     velocity_publisher = rospy.Publisher('/cmd_vel', Twist, queue_size=10)
     vel_msg = Twist()
     
-    # UDP config
+    # TCP config
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM) # TCP
-    sock.bind(("192.168.0.3", 4002))
+    sock.bind(("10.154.116.54", 4002))
 
     while True:
         char, addr = sock.accept(1)
