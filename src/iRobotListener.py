@@ -10,7 +10,7 @@ def move():
     
     # UDP config
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM) # UDP
-    sock.bind(("10.154.116.54", 4002))
+    sock.bind(("192.168.0.5", 4002))
 
     while True:
         char, addr = sock.recvfrom(1024)
