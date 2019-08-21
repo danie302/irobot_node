@@ -9,6 +9,12 @@
   <!-- Odom Sender Node -->
   <node name="odomSendNode"          pkg="irobot"  type="odomDataSender.py" output="screen">
   </node>
+  <!-- TF Sender Node -->
+  <node name="tfSendNode"          pkg="irobot"  type="tfDataSender.py" output="screen">
+  </node>
+  <!-- Static TF Sender Node -->
+  <node name="tfStaticSendNode"          pkg="irobot"  type="tfStaticDataSender.py" output="screen">
+  </node>
   <!-- iRobot Driver Node -->
   <arg name="config" default="$(find ca_driver)/config/default.yaml"/>
   <arg name="desc" default="true"/>
