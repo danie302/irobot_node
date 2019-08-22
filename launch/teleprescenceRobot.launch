@@ -33,4 +33,7 @@
   <param name="inverted"            type="bool"   value="false"/>
   <param name="angle_compensate"    type="bool"   value="true"/>
   </node>
+  <!-- Slam Gmapping Node -->
+  <node name="slamNode"          pkg="gmapping"  type="slam_gmapping" output="screen">
+  </node>
 </launch>
