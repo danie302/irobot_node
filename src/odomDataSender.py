@@ -6,7 +6,7 @@ import json
 import yaml
 import os
 
-IP = os.environ.get("IPbaseDRI")
+IP = "daniel.local"
 
 def convertToSend(data):
     data = yaml.load(str(data))

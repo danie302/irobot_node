@@ -4,7 +4,7 @@ import socket
 from geometry_msgs.msg import Twist
 import os
 
-IP = os.environ.get("IPraspDRI")
+IP ="ubuntu.local"
 def move():
     # Starts a new node
     rospy.init_node('iRobotMessageReceiver', anonymous=True)
@@ -16,7 +16,9 @@ def move():
     sock.bind((IP, 4002))
 
     while True:
+	print("True")
         char, addr = sock.recvfrom(1024)
+	print(char)
         if char == "right":
             vel_msg.linear.x = 0
             vel_msg.linear.y = 0
