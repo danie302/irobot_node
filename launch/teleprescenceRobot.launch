@@ -1,36 +1,14 @@
 <launch>
   <node pkg="tf" type="static_transform_publisher" name="lidar_broadcaster" args="0 0 0.1 0 0 0 base_link laser_frame 100" />
-  <!-- iRobotControl Node
-  <node name="iRobotControl"          pkg="irobot"  type="iRobotListener.py" output="screen">
-  </node>
-  -->
-  <!-- RpLidar Sender Node 
-  <node name="rpLidarSendNode"          pkg="irobot"  type="laserDataSender.py" output="screen">
-  </node>
-  -->
-  <!-- Odom Sender Node
-  <node name="odomSendNode"          pkg="irobot"  type="odomDataSender.py" output="screen">
-  </node>
-  -->
-  <!-- TF Sender Node
-  <node name="tfSendNode"          pkg="irobot"  type="tfDataSender.py" output="screen">
-  </node>
-  -->
-  <!-- Static TF Sender Node
-  <node name="tfStaticSendNode"          pkg="irobot"  type="tfStaticDataSender.py" output="screen">
-  </node>
-  -->
   <!-- iRobot Driver Node -->
   <arg name="config" default="$(find ca_driver)/config/default.yaml"/>
   <arg name="desc" default="true"/>
   <node name="ca_driver" pkg="ca_driver" type="ca_driver" output="screen">
     <rosparam command="load" file="$(arg config)"/>
     <param name="robot_model" value="CREATE_2"/>
-   <!-- <remap from="odom" to="odom0" /> -->
   </node>
   <!-- Robot description -->
   <include if="$(arg desc)" file="$(find ca_description)/launch/create_2.launch"/>
-  <!-- Sweep Lidar description -->
 
 <!-- run sweep_node node -->
     <node name="sweep_node"          pkg="sweep_ros"  type="sweep_node" output="screen">
